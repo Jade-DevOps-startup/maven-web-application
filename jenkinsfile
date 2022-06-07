@@ -14,7 +14,7 @@ sh "$mavenHome/bin/mvn clean package"
 
 //generate Sonarqube report
 stage('Sonarqube report'){
-sh "$mavenHome/bin/mvn sonar:sonar
+sh "$mavenHome/bin/mvn sonar:sonar"
 }
 
 //upload artifactory
