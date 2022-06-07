@@ -1,0 +1,32 @@
+node{
+
+def mavenHome = tool name: "maven3.8.5"
+
+//Checkout stage
+stage('Checkout'){
+git branch: 'development', credentialsId: '5bb4ec01-31d9-4f87-8840-334bc52f2edf', url: 'https://github.com/Jade-DevOps-startup/maven-web-application.git'
+}
+
+//Build
+stage('Build'){
+sh "$mavenHome/bin/mvn clean package"
+}
+
+//generate Sonarqube report
+stage('Sonarqube report'){
+sh "$mavenHome/bin/mvn sonar:sonar
+}
+
+//upload artifactory
+stage('nexus repos'){
+sh "$mavenHome/bin/mvn deploy"
+}
+
+//Deploy application into tomcat server
+stage('deploy application'){
+sshagent(['2811a730-cff6-47ce-8577-e8c9b1c8dac9']) {
+	sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@35.183.113.65:/opt/apache-tomcat-9.0.62/webapps"	
+}
+}
+
+}
