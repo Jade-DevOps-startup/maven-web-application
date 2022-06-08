@@ -100,13 +100,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://35.182.6.99:8081/repository/facebok-releases/</url>
+	      <url>http://99.79.67.143:8081/repository/jade-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://35.182.6.99:8081/repository/facebook-snapshot/</url>
+	      <url>http://99.79.67.143:8081/repository/jade-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
